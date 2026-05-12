@@ -27,7 +27,7 @@ bool generate_salt(unsigned char* salt){
     return true;
 }
 
-bool store_password(char* password){
+bool store_password(const char* password){
     unsigned char hash[hash_size];
     unsigned char salt[salt_size];
 
@@ -65,7 +65,7 @@ bool store_password(char* password){
 
 }
 
-bool verify_password(char* entered_password){
+bool verify_password(const char* entered_password){//const char for cpp compatibility and also to protect original value of string
     unsigned char salt[salt_size];
     unsigned char hash[hash_size];
     unsigned char new_hash[hash_size];
@@ -73,6 +73,7 @@ bool verify_password(char* entered_password){
 
     fp = fopen("./auth.txt","rb");
     if(fp==NULL){
+        printf("auth.txt missing\n");
         return false;
     }
 
@@ -96,6 +97,6 @@ bool verify_password(char* entered_password){
     new_hash               // output buffer
     );
 
-    return memcmp(hash,new_hash,hash_size) == 0;
+    return memcmp(hash,new_hash,hash_size) == 0;//memcmp return zero if the string match
 }
 

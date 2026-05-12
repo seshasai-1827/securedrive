@@ -1,12 +1,12 @@
 #include "authorization.h"
 int main() {
     char entered_password[128];
-    bool success = store_password("my_password");
+    /*bool success = store_password("my_password");
     if (success)
     printf("\npassword stored successfully");
     else
     printf("\nfailed to store password");
-    
+    */
     printf("\nenter password : ");
     
     

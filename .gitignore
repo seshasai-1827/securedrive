@@ -1,3 +1,9 @@
 data/*
 !data/.gitkeep
 auth.txt
+build/
+*.o
+*.out
+*.a
+*.so
+*.exe
